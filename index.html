@@ -53,6 +53,7 @@
             display: flex;
             gap: 5px;
             flex-wrap: wrap; 
+            align-items: center;
         }
 
         .nav-btn, .rotate-btn, .adblock-btn, .close-top-btn, .external-top-btn, .copy-top-btn {
@@ -64,6 +65,27 @@
             cursor: pointer;
             font-weight: bold;
             transition: 0.3s;
+        }
+
+        /* ستايل مدخل الثواني الجديد */
+        .interval-input-group {
+            display: flex;
+            align-items: center;
+            background: #2c3e50;
+            padding: 4px 8px;
+            border-radius: 4px;
+            gap: 5px;
+            border: 1px solid #34495e;
+        }
+        .interval-input-group label { font-size: 12px; font-weight: bold; }
+        .interval-input-group input { 
+            width: 45px; 
+            background: #000; 
+            color: #2ecc71; 
+            border: 1px solid #555; 
+            border-radius: 3px; 
+            text-align: center;
+            font-weight: bold;
         }
 
         .nav-btn { background-color: #3498db; }
@@ -291,6 +313,11 @@
             </div>
             
             <div class="nav-buttons">
+                <div class="interval-input-group">
+                    <label>المدة (5-60ث):</label>
+                    <input type="number" id="autoSwitchIntervalInput" value="20" min="5" max="60" onchange="updateAutoSwitchInterval()">
+                </div>
+
                 <button id="closeVid" class="close-top-btn" onclick="closePlayer()" style="display: none;">إغلاق ✖</button>
                 <button id="externalVid" class="external-top-btn" onclick="openExternal()" style="display: none;">خارجي ↗</button>
                 <button id="copyLinkBtn" class="copy-top-btn" onclick="copyCurrentLink()" style="display: none;">نسخ الرابط 🔗</button>
@@ -299,7 +326,8 @@
 
                 <button class="nav-btn" onclick="prevStream()">الســـــــــــــــــــابق ⏮️</button>
                 <button class="nav-btn" onclick="nextStream()">التـــــــــــــــــــــــــــــــــــــــــــــالي ⏭️</button>
-                <button class="rotate-btn" onclick="toggleRotation()">تدوير 🔄</button><button id="adblockBtn" class="adblock-btn disabled" onclick="toggleAdBlock()">🛡️ المانع (مقفول)</button>
+                <button class="rotate-btn" onclick="toggleRotation()">تدوير 🔄</button>
+                <button id="adblockBtn" class="adblock-btn disabled" onclick="toggleAdBlock()">🛡️ المانع (مقفول)</button>
             </div>
 
             <button id="adblockBtn" class="adblock-btn" onclick="toggleAdBlock()">🛡️ المانع (شغال)</button>
@@ -336,7 +364,8 @@
 <button id="btn_new_1775920551815_17" class="tab-btn" data-link="https://yskylive.netlify.app/bein3" data-open="internal" onclick="playStream(this)">1 18</button>
 <button id="btn_new_1775920551815_18" class="tab-btn" data-link="https://yskylive.netlify.app/bein4" data-open="internal" onclick="playStream(this)">1 19</button>
 <button id="btn_new_1775920551815_19" class="tab-btn" data-link="https://yskylive.netlify.app/bein5" data-open="internal" onclick="playStream(this)">1 20</button>
-<button id="btn_new_1775920551815_20" class="tab-btn" data-link="https://yskylive.netlify.app/bein6" data-open="internal" onclick="playStream(this)">1 21</button></div>
+<button id="btn_new_1775920551815_20" class="tab-btn" data-link="https://yskylive.netlify.app/bein6" data-open="internal" onclick="playStream(this)">1 21</button>
+</div>
     </div>
 
     <div class="video-wrapper">
@@ -372,19 +401,19 @@
             <h3 style="margin-top:0">إعدادات البث المباشر</h3>
             <div class="form-group">
                 <label>اختار الزرار للتعديل أو الحذف:</label>
-                <select id="buttonSelect" onchange="loadButtonData()" data-ddg-inputtype="unknown"><option value="btn_new_1775554955005_0">Ad Italy 1</option><option value="btn_new_1775554955005_1">Ad Italy 2</option><option value="btn_new_1775554955005_2">Ad Italy 3</option><option value="btn_new_1775554955005_3">Ad Italy 4</option><option value="btn_new_1775554955005_4">Ad Italy 5</option><option value="btn_new_1775556367346_0">ch 1</option><option value="btn_new_1775556367346_1">ch 2</option><option value="btn_new_1775556367346_2">ch 3</option><option value="btn_new_1775556367346_3">ch 4</option><option value="btn_new_1775556367346_4">ch 5</option><option value="btn_new_1775556367346_5">ch 6</option><option value="btn_new_1775920551815_0">1 1</option><option value="btn_new_1775920551815_1">1 2</option><option value="btn_new_1775920551815_2">1 3</option><option value="btn_new_1775920551815_3">1 4</option><option value="btn_new_1775920551815_4">1 5</option><option value="btn_new_1775920551815_5">1 6</option><option value="btn_new_1775920551815_6">1 7</option><option value="btn_new_1775920551815_7">1 8</option><option value="btn_new_1775920551815_8">1 9</option><option value="btn_new_1775920551815_9">1 10</option><option value="btn_new_1775920551815_10">1 11</option><option value="btn_new_1775920551815_11">1 12</option><option value="btn_new_1775920551815_12">1 13</option><option value="btn_new_1775920551815_13">1 14</option><option value="btn_new_1775920551815_14">1 15</option><option value="btn_new_1775920551815_15">1 16</option><option value="btn_new_1775920551815_16">1 17</option><option value="btn_new_1775920551815_17">1 18</option><option value="btn_new_1775920551815_18">1 19</option><option value="btn_new_1775920551815_19">1 20</option><option value="btn_new_1775920551815_20">1 21</option></select>
+                <select id="buttonSelect" onchange="loadButtonData()"><option value="btn_new_1775554955005_0">Ad Italy 1</option><option value="btn_new_1775554955005_1">Ad Italy 2</option><option value="btn_new_1775554955005_2">Ad Italy 3</option><option value="btn_new_1775554955005_3">Ad Italy 4</option><option value="btn_new_1775554955005_4">Ad Italy 5</option><option value="btn_new_1775556367346_0">ch 1</option><option value="btn_new_1775556367346_1">ch 2</option><option value="btn_new_1775556367346_2">ch 3</option><option value="btn_new_1775556367346_3">ch 4</option><option value="btn_new_1775556367346_4">ch 5</option><option value="btn_new_1775556367346_5">ch 6</option><option value="btn_new_1775920551815_0">1 1</option><option value="btn_new_1775920551815_1">1 2</option><option value="btn_new_1775920551815_2">1 3</option><option value="btn_new_1775920551815_3">1 4</option><option value="btn_new_1775920551815_4">1 5</option><option value="btn_new_1775920551815_5">1 6</option><option value="btn_new_1775920551815_6">1 7</option><option value="btn_new_1775920551815_7">1 8</option><option value="btn_new_1775920551815_8">1 9</option><option value="btn_new_1775920551815_9">1 10</option><option value="btn_new_1775920551815_10">1 11</option><option value="btn_new_1775920551815_11">1 12</option><option value="btn_new_1775920551815_12">1 13</option><option value="btn_new_1775920551815_13">1 14</option><option value="btn_new_1775920551815_14">1 15</option><option value="btn_new_1775920551815_15">1 16</option><option value="btn_new_1775920551815_16">1 17</option><option value="btn_new_1775920551815_17">1 18</option><option value="btn_new_1775920551815_18">1 19</option><option value="btn_new_1775920551815_19">1 20</option><option value="btn_new_1775920551815_20">1 21</option></select>
             </div>
             <div class="form-group">
                 <label>الاسم الجديد:</label>
-                <input type="text" id="editName" data-ddg-inputtype="unknown">
+                <input type="text" id="editName">
             </div>
             <div class="form-group">
                 <label>اللينك الجديد:</label>
-                <input type="text" id="editLink" data-ddg-inputtype="unknown">
+                <input type="text" id="editLink">
             </div>
             <div class="form-group">
                 <label>طريقة الفتح:</label>
-                <select id="editOpenTarget" data-ddg-inputtype="unknown">
+                <select id="editOpenTarget">
                     <option value="internal">داخلي (داخل المشغل)</option>
                     <option value="external">خارجي (في نافذة جديدة)</option>
                 </select>
@@ -404,11 +433,25 @@
 
     <script>
         let isSelectionMode = false;
-        let autoSkipTimer = null; 
         let autoSwitchInterval = null; 
-        let activeLinkType = 'iframe'; // تتبع نوع المشغل الحالي
+        let remainingSeconds = 20; 
+        let activeLinkType = 'iframe'; 
 
-        // الدالة الجديدة الخاصة بزر الإخفاء والإظهار
+        // دالة لتحديث الثواني المختارة والتأكد من الحدود
+        function updateAutoSwitchInterval() {
+            let input = document.getElementById('autoSwitchIntervalInput');
+            let val = parseInt(input.value);
+            if (isNaN(val) || val < 5) val = 5;
+            if (val > 60) val = 60;
+            input.value = val;
+            
+            // إذا كان التقليب شغال، نحدث العداد فوراً
+            if (autoSwitchInterval) {
+                remainingSeconds = val;
+                document.getElementById('autoSwitchBtn').innerText = `شغال (${remainingSeconds}) ⏱️`;
+            }
+        }
+
         function toggleHeaderVisibility() {
             let header = document.getElementById('mainPlayerHeader');
             let btn = document.getElementById('toggleHeaderBtn');
@@ -423,15 +466,26 @@
 
         function toggleAutoSwitch() {
             let btn = document.getElementById('autoSwitchBtn');
+            let intervalVal = parseInt(document.getElementById('autoSwitchIntervalInput').value);
+            
             if (autoSwitchInterval) {
                 clearInterval(autoSwitchInterval);
                 autoSwitchInterval = null;
                 btn.style.backgroundColor = '#e67e22'; 
                 btn.innerText = 'تقليب تلقائي ⏱️';
             } else {
-                autoSwitchInterval = setInterval(() => { nextStream(); }, 20000); 
+                remainingSeconds = intervalVal; 
                 btn.style.backgroundColor = '#27ae60'; 
-                btn.innerText = 'التقليب شغال ⏱️';
+                btn.innerText = `شغال (${remainingSeconds}) ⏱️`;
+                
+                autoSwitchInterval = setInterval(() => {
+                    remainingSeconds--;
+                    if (remainingSeconds <= 0) {
+                        nextStream();
+                        remainingSeconds = parseInt(document.getElementById('autoSwitchIntervalInput').value);
+                    }
+                    btn.innerText = `شغال (${remainingSeconds}) ⏱️`;
+                }, 1000);
             }
         }
 
@@ -439,7 +493,6 @@
             isSelectionMode = !isSelectionMode;
             let bar = document.getElementById('selectionBar');
             let selectBtn = document.getElementById('selectModeBtn');
-
             if (isSelectionMode) {
                 bar.classList.add('active');
                 selectBtn.style.backgroundColor = '#e74c3c';
@@ -468,15 +521,14 @@
 
         function deleteSelected() {
             let selected = document.querySelectorAll('#mainTabs .tab-btn.selected-channel');
-            if (selected.length === 0) { alert("يا باشا حدد قنوات الأول عشان تحذفها!"); return; }
-            if(confirm(`متأكد إنك عايز تحذف ${selected.length} قناة؟`)) {
+            if (selected.length === 0) { alert("حدد قنوات الأول!"); return; }
+            if(confirm(`حذف ${selected.length} قناة؟`)) {
                 selected.forEach(btn => {
                     if (btn.classList.contains('active')) closePlayer();
                     btn.remove();
                 });
                 populateSelectMenu();
                 updateSelectionCount();
-                document.getElementById('selectAllCheckbox').checked = false;
             }
         }
 
@@ -484,7 +536,7 @@
             let selected = document.querySelectorAll('#mainTabs .tab-btn.selected-channel');
             if (selected.length === 0) { alert("حدد قنوات الأول!"); return; }
             let links = Array.from(selected).map(btn => btn.getAttribute('data-link')).join('\n');
-            triggerCopy(links, "تم نسخ الروابط المحددة بنجاح! 🔗");
+            triggerCopy(links, "تم النسخ!");
         }
 
         function copySelectedCodes() {
@@ -500,7 +552,7 @@
 
         function duplicateSelected() {
             let selected = document.querySelectorAll('#mainTabs .tab-btn.selected-channel');
-            if (selected.length === 0) { alert("حدد قنوات الأول عشان تكررها!"); return; }
+            if (selected.length === 0) { alert("حدد قنوات الأول!"); return; }
             let container = document.getElementById('mainTabs');
             let timestamp = new Date().getTime();
             selected.forEach((btn, index) => {
@@ -510,7 +562,6 @@
                 container.appendChild(clone);
             });
             populateSelectMenu();
-            alert(`تم تكرار ${selected.length} قناة بنجاح! 📑`);
         }
 
         function openBulkEditModal() {
@@ -548,13 +599,13 @@
             textArea.style.left = "-9999px";
             document.body.appendChild(textArea);
             textArea.select();
-            try { document.execCommand('copy'); alert(successMsg); } 
-            catch (err) { alert("عذراً، المتصفح رفض النسخ."); }
+            try { document.execCommand('copy'); alert(successMsg); } catch (err) {}
             document.body.removeChild(textArea);
         }
 
         function populateSelectMenu() {
             const selectMenu = document.getElementById('buttonSelect');
+            if(!selectMenu) return;
             selectMenu.innerHTML = ''; 
             document.querySelectorAll('#mainTabs .tab-btn:not(#autoFetchBtn)').forEach(btn => {
                 let opt = document.createElement('option');
@@ -575,7 +626,6 @@
             let iframe = document.getElementById('iframePlayer');
             let btn = document.getElementById('adblockBtn');
             adblockEnabled = !adblockEnabled;
-            
             if (adblockEnabled) {
                 iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
                 btn.innerText = '🛡️ المانع (شغال)';
@@ -585,65 +635,57 @@
                 btn.innerText = '🛡️ المانع (مقفول)';
                 btn.classList.add('disabled');
             }
-            
-            if(activeLinkType === 'iframe') {
-                let currentSrc = iframe.src;
-                if(currentSrc && currentSrc !== window.location.href) iframe.src = currentSrc;
-            }
         }
 
-        // الدالة المعدلة الذكية للاختيار بين Iframe و Video HLS
         function playStream(btnElement) {
             if (isSelectionMode && btnElement.id !== 'autoFetchBtn') {
                 btnElement.classList.toggle('selected-channel');
                 updateSelectionCount();
                 return; 
             }
-
-            let link = btnElement.getAttribute('data-link');
+            let originalLink = btnElement.getAttribute('data-link');
             let target = btnElement.getAttribute('data-open') || 'internal'; 
-
-            if(!link) return;
+            if(!originalLink) return;
 
             if (target === 'external') {
-                window.open(link, '_blank');
+                window.open(originalLink, '_blank');
                 return; 
             }
 
             let iframe = document.getElementById('iframePlayer');
             let video = document.getElementById('videoPlayer');
 
-            // إيقاف أي مشغل شغال حالياً
             iframe.src = "";
             video.pause();
             video.removeAttribute('src');
             video.load();
             if (window.hls) window.hls.destroy();
 
-            // فحص نوع الرابط
-            if (link.includes('.m3u8') || link.includes('.mp4')) {
-                // استخدام مشغل HLS للروابط المباشرة
+            let linkToPlay = originalLink;
+            if (linkToPlay.endsWith('.ts')) {
+                linkToPlay = linkToPlay.replace('.ts', '.m3u8');
+            }
+
+            if (linkToPlay.includes('.m3u8') || linkToPlay.includes('.mp4')) {
                 activeLinkType = 'video';
                 iframe.style.display = 'none';
                 video.style.display = 'block';
-
-                if (Hls.isSupported() && link.includes('.m3u8')) {
+                if (Hls.isSupported() && linkToPlay.includes('.m3u8')) {
                     window.hls = new Hls();
-                    window.hls.loadSource(link);
+                    window.hls.loadSource(linkToPlay);
                     window.hls.attachMedia(video);
                     window.hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                        video.play().catch(e => console.log("المتصفح منع التشغيل التلقائي"));
+                        video.play().catch(e => {});
                     });
                 } else {
-                    video.src = link;
-                    video.play().catch(e => console.log("المتصفح منع التشغيل التلقائي"));
+                    video.src = linkToPlay;
+                    video.play().catch(e => {});
                 }
             } else {
-                // استخدام Iframe لصفحات الويب العادية
                 activeLinkType = 'iframe';
                 video.style.display = 'none';
                 iframe.style.display = 'block';
-                iframe.src = link;
+                iframe.src = linkToPlay;
             }
 
             document.getElementById('closeVid').style.display = 'inline-block';
@@ -656,16 +698,12 @@
         function closePlayer() {
             let iframe = document.getElementById('iframePlayer');
             let video = document.getElementById('videoPlayer');
-            
             iframe.src = "";
             iframe.style.display = 'none';
-            
             video.pause();
             video.removeAttribute('src');
-            video.load();
             video.style.display = 'none';
             if (window.hls) window.hls.destroy();
-            
             document.getElementById('closeVid').style.display = 'none';
             document.getElementById('externalVid').style.display = 'none';
             document.getElementById('copyLinkBtn').style.display = 'none';
@@ -674,13 +712,12 @@
 
         function openExternal() {
             let activeBtn = document.querySelector('.tab-btn.active');
-            if (activeBtn) { window.open(activeBtn.getAttribute('data-link'), '_blank'); } 
-            else { alert("مفيش بث شغال حالياً!"); }
+            if (activeBtn) window.open(activeBtn.getAttribute('data-link'), '_blank');
         }
 
         function copyCurrentLink() {
             let activeBtn = document.querySelector('.tab-btn.active');
-            if (activeBtn) { triggerCopy(activeBtn.getAttribute('data-link'), "تم نسخ رابط القناة بنجاح!"); }
+            if (activeBtn) triggerCopy(activeBtn.getAttribute('data-link'), "تم النسخ!");
         }
 
         function openModal() {
@@ -706,17 +743,10 @@
             let id = document.getElementById('buttonSelect').value;
             let btn = document.getElementById(id);
             if(!btn) return;
-            
             btn.innerText = document.getElementById('editName').value;
             btn.setAttribute('data-link', document.getElementById('editLink').value);
             btn.setAttribute('data-open', document.getElementById('editOpenTarget').value);
-            
             populateSelectMenu();
-            
-            if (btn.classList.contains('active') && !isSelectionMode) {
-                if (document.getElementById('editOpenTarget').value === 'external') { closePlayer(); } 
-                else { playStream(btn); }
-            }
             alert("تم التعديل!");
         }
 
@@ -727,17 +757,15 @@
                 if(btn.classList.contains('active')) closePlayer();
                 btn.remove();
                 populateSelectMenu();
-                alert("تم الحذف!");
             }
         }
 
         function addNewChannel() {
-            let inputLinks = prompt("حط اللينكات هنا (كل لينك في سطر أو بينهم مسافة):");
+            let inputLinks = prompt("حط اللينكات هنا:");
             if (!inputLinks) return;
             let linksArray = inputLinks.split(/[\s,\n]+/).filter(l => l.trim() !== "");
-            let baseName = prompt("الاسم الأساسي للقنوات:", "قناة جديدة");
+            let baseName = prompt("الاسم الأساسي:", "قناة جديدة");
             let timestamp = new Date().getTime();
-            
             linksArray.forEach((link, index) => {
                 let newBtn = document.createElement("button");
                 newBtn.id = "btn_new_" + timestamp + "_" + index;
@@ -764,7 +792,7 @@
         function copyFullCode() {
             closeModal();
             let content = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-            triggerCopy(content, "تم نسخ الكود بالكامل بنجاح! ✅");
+            triggerCopy(content, "تم نسخ الكود بالكامل!");
         }
 
         function nextStream() {
@@ -774,6 +802,7 @@
             let nextIndex = (activeIndex + 1) % tabs.length; 
             playStream(tabs[nextIndex]);
             tabs[nextIndex].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+            if (autoSwitchInterval) remainingSeconds = parseInt(document.getElementById('autoSwitchIntervalInput').value);
         }
 
         function prevStream() {
@@ -783,9 +812,9 @@
             let prevIndex = (activeIndex - 1 + tabs.length) % tabs.length; 
             playStream(tabs[prevIndex]);
             tabs[prevIndex].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+            if (autoSwitchInterval) remainingSeconds = parseInt(document.getElementById('autoSwitchIntervalInput').value);
         }
 
         function toggleRotation() { document.querySelector('.video-wrapper').classList.toggle('rotated'); }
     </script>
-
 </body></html>
